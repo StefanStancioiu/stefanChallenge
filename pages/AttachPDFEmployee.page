@@ -1,0 +1,18 @@
+<!--
+ @Page Name                : AttachPDFEmployee.page
+ @Description              : Visualforce page for creating a PDF file and attaching to Employee__c
+ @Author                   : Stefan Stancioiu 
+ @Group                    :
+ @Last Modified By         : Stefan Stancioiu 
+ @Last Modified On         : 22/03/2020, 10:00:00 AM
+ @Modification Log         : 22/03/2020, 10:00:00 AM
+ ==========================================================================================
+ Ver           Date              Author                               Modification
+ ==========================================================================================
+ 1.0           22/03/2020        Stefan Stancioiu                     Initial Version
+-->
+
+<apex:page action="{!attachPDF}" extensions="AttachPDFToEmployee" standardController="Employee__c">
+	<apex:pageMessages ></apex:pageMessages><!-- included for display of errors should they occur -->
+	<apex:detail inlineEdit="true" relatedList="true"></apex:detail> <!-- included so Employee detail information is visible when errors occur -->
+</apex:page>

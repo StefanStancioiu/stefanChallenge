@@ -1,0 +1,33 @@
+<!--
+ @Page Name                : NewEmployee.page
+ @Description              : Visualforce page for creating and saving a new Employee record
+ @Author                   : Stefan Stancioiu 
+ @Group                    :
+ @Last Modified By         : Stefan Stancioiu 
+ @Last Modified On         : 22/03/2020, 10:00:00 AM
+ @Modification Log         : 22/03/2020, 10:00:00 AM
+ ==========================================================================================
+ Ver           Date              Author                               Modification
+ ==========================================================================================
+ 1.0           22/03/2020        Stefan Stancioiu                     Initial Version
+-->
+<apex:page standardController="Employee__c" extensions="NewEmployeeController">
+    <apex:form >
+        <apex:pageBlock title="Employee Edit">
+            <apex:pageBlockSection title="Information" collapsible="false">
+                <apex:inputField value="{!empObj.Department__c}"/>
+                <apex:inputField value="{!empObj.Address__c}"/>
+                <apex:inputField required="true" value="{!empObj.Name}"/>
+                 <apex:inputField value="{!empObj.Employee_position__c}"/>
+                <apex:inputField value="{!empObj.Phone__c}"/>
+                <apex:inputField value="{!empObj.Email__c}"/>
+                <apex:inputField value="{!empObj.Gender__c}"/>
+                <apex:outputField value="{!empObj.OwnerId}"/>
+                <apex:inputField value="{!empObj.Date_of_Birth__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton value="Save" action="{!saveEmployee}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

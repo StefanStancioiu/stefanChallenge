@@ -1,0 +1,29 @@
+<!--
+ @Page Name                : NewDepartment.page
+ @Description              : Visualforce page for creating and saving a new Department record
+ @Author                   : Stefan Stancioiu 
+ @Group                    :
+ @Last Modified By         : Stefan Stancioiu 
+ @Last Modified On         : 22/03/2020, 10:00:00 AM
+ @Modification Log         : 22/03/2020, 10:00:00 AM
+ ==========================================================================================
+ Ver           Date              Author                               Modification
+ ==========================================================================================
+ 1.0           22/03/2020        Stefan Stancioiu                     Initial Version
+-->
+<apex:page standardController="Department__c" extensions="NewDepartmentController">
+    <apex:form >
+        <apex:pageBlock title="Department Edit">
+            <apex:pageBlockSection title="Information" collapsible="false">
+                <apex:inputField required="true" value="{!dep.Name}"/>
+                <apex:inputField value="{!dep.Location__c}"/>
+                <apex:inputField value="{!dep.Manager_No__c}"/>
+                <apex:inputField value="{!dep.Admin_R_Dept__c}"/>
+                <apex:outputField value="{!dep.OwnerId}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton value="Save" action="{!saveDepartment}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

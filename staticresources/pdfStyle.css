@@ -1,0 +1,45 @@
+/*
+	Created by: Stefan Stancioiu
+	Last Update: 21 March 2020	
+	Notes:
+		- this file is stored as a static resource in Salesforce and referenced in Visualforce pages with the <apex:stylesheet> tag
+*/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+@page {
+	size: landscape; /*landscape orientation*/
+	/*page numbers in the bottom center of each page in the pdf document*/
+	@bottom-center {
+		content: "Page " counter(page) " of " counter(pages);
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	/*placeholders for other content areas*/
+	@bottom-right {
+		content: "Bottom Right";
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@bottom-left {
+		content: "Bottom Left";
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@top-right {
+		content: "Top Right";
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@top-center {
+		content: "Top Center";
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@top-left {
+		content: "Top Left";
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+
+}

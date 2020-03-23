@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Generate_PDF</fullName>
+    <availability>online</availability>
+    <description>Used to render the page as PDF.</description>
+    <displayType>link</displayType>
+    <linkType>page</linkType>
+    <masterLabel>Generate PDF</masterLabel>
+    <openType>replace</openType>
+    <page>AttachPDFEmployee</page>
+    <protected>false</protected>
+</WebLink>

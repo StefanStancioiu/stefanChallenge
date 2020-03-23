@@ -1,0 +1,37 @@
+<!--
+ @Page Name                : ManageDepartments.page
+ @Description              : Visualforce page for managing Departments
+ @Author                   : Stefan Stancioiu 
+ @Group                    :
+ @Last Modified By         : Stefan Stancioiu 
+ @Last Modified On         : 22/03/2020, 10:00:00 AM
+ @Modification Log         : 22/03/2020, 10:00:00 AM
+ ==========================================================================================
+ Ver           Date              Author                               Modification
+ ==========================================================================================
+ 1.0           22/03/2020        Stefan Stancioiu                     Initial Version
+-->
+<apex:page controller="ManageDepartmentsController">
+    <apex:form id="form" >
+        <apex:pageBlock title="Departments">
+            <apex:pageBlockSection title="All Departments" collapsible="false" columns="1">
+                <apex:pageBlockTable value="{!departments}" var="row">
+                    <apex:column >
+                        <apex:outputLink title="" value="/{!row.id}/e?retURL=/apex/{!$CurrentPage.Name}" style="font-weight:bold">Edit</apex:outputLink>
+                        &nbsp;|&nbsp;
+                        <a href="javascript:if (window.confirm('Are you sure?')) deleteDepartment('{!row.Id}');" style="font-weight:bold">Del</a>
+                    </apex:column>
+                    <apex:column value="{!row.Name}"/>
+                    <apex:column value="{!row.Location__c}"/>
+                    <apex:column value="{!row.Admin_R_Dept__c}"/>
+                    <apex:column value="{!row.Manager_No__c}"/>
+              </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:actionFunction action="{!deleteDepartment}" name="deleteDepartment" reRender="form" >
+           <apex:param name="departmentId" value="" assignTo="{!selectedDepId}"/>
+        </apex:actionFunction>
+        
+    </apex:form>
+</apex:page>

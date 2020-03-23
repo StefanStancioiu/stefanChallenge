@@ -1,0 +1,69 @@
+<!--
+ @Page Name                : AccountMultipleSearchWithPagination.page
+ @Description              : Visualforce page for filtering Accounts
+ @Author                   : Stefan Stancioiu 
+ @Group                    :
+ @Last Modified By         : Stefan Stancioiu 
+ @Last Modified On         : 22/03/2020, 10:00:00 AM
+ @Modification Log         : 22/03/2020, 10:00:00 AM
+ ==========================================================================================
+ Ver           Date              Author                               Modification
+ ==========================================================================================
+ 1.0           22/03/2020        Stefan Stancioiu                     Initial Version
+-->
+<apex:page controller="AccountMultipleSearchWithPagenationCLS" action="{!searchAcc}" >
+<script type="text/javascript">
+    window.onload=function() {
+    // document.getElementById("{!$Component.thePb.thepbs.accName}").focus();
+    }   
+</script>
+ <apex:form >
+  <apex:pageBlock id="thePb" title="Account Details To Search">
+   <apex:pageblockSection id="thepbs">
+    <apex:inputField value="{!acc.BillingCity}" />
+     <apex:inputField value="{!acc.BillingCountry}"/>
+     <apex:inputField value="{!acc.Name}" required="false" id="accName"/>
+     <apex:inputfield value="{!acc.BillingState}"/>
+   </apex:pageblockSection>
+   <apex:pageblockButtons location="bottom">
+      <apex:commandButton value="Search" action="{!searchAcc}" />
+     </apex:pageblockButtons>  
+  </apex:pageBlock>
+  
+   <apex:pageBlock title="Account Details" id="noRec" rendered="{! IF( accountList != null && accountList.size ==0 , true, false)}" >
+  <apex:outputPanel >
+    <h1>No Records Found </h1>
+</apex:outputPanel>
+  </apex:pageBlock>
+
+  
+  <apex:pageBlock title="Account Details" id="details" rendered="{! IF( accountList != null && accountList.size >0, true, false)}" >
+
+   <apex:pageBlockTable value="{!accountList}" var="a">
+   <apex:column headerValue="Account Name">
+    <apex:outputLink target="_blank" value="/{!a.id}">{!a.Name}</apex:outputLink> 
+   </apex:column>
+       
+    <!--  If you want facet style you can add like this.
+   <apex:column >
+     <apex:facet name="header">Link Name</apex:facet>
+     <apex:outputLink target="_blank" value="/{!a.id}">{!a.Name}</apex:outputLink> 
+    </apex:column>
+    -->
+       
+    <apex:column value="{!a.BillingCity}" headerValue="Billing City"/>  
+    <apex:column value="{!a.BillingCountry}" headerValue="Billing Country"/>  
+    <apex:column value="{!a.BillingState}" headerValue="Billing State "/>      
+    </apex:pageBlockTable>
+   
+    <apex:pageblockButtons >
+ <apex:commandButton value="First Page" rerender="details" action="{!FirstPage}" disabled="{!prev}"/>
+<apex:commandButton value="Previous" rerender="details" action="{!previous}" disabled="{!prev}"/>
+<apex:commandButton value="Next" rerender="details" action="{!next}" disabled="{!nxt}"/>
+<apex:commandButton value="Last Page" rerender="details" action="{!LastPage}" disabled="{!nxt}"/>
+</apex:pageblockButtons>
+   
+  </apex:pageBlock>
+
+ </apex:form>
+</apex:page>
